@@ -1,3 +1,6 @@
 # ignore all .exe and .pdb files
 *.exe
 *.pdb
+
+# uwu package build target
+uwu/target/**
