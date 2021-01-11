@@ -17,8 +17,8 @@ fn main() {
         .expect("error reading from stdin");
 
     // take input number and output corresponding month
-    let parseInput: u32 = input.parse().unwrap(); //need error handling
-    println!("{}",parseInput);
+    let parse_input: u32 = input.parse().unwrap(); //need error handling
+    println!("{}",parse_input);
     
 
 }
