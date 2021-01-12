@@ -17,8 +17,11 @@ fn main() {
         .expect("error reading from stdin");
 
     // take input number and output corresponding month
-    let parse_input: u32 = input.parse().unwrap(); //need error handling
-    println!("{}",parse_input);
+    let parse_input: usize = input.trim().parse().unwrap(); //need error handling
     
-
+    if parse_input > 0 && parse_input < 13 {
+        println!("{}", months[parse_input]);
+    } else {
+        println!("not in month range");
+    }
 }
