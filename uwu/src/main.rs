@@ -19,7 +19,7 @@ fn main() {
 
     // take input number and output corresponding month
     let parse_input: usize = input.trim().parse().unwrap_or_default();
-    if parse_input > 0 && parse_input < 11 {
+    if parse_input > 0 && parse_input < 12 {
         println!("That corresponds to the month of {}", months[parse_input - 1]); // -1 since index starts at 0
     } else {
         println!("not in month range");
