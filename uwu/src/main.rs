@@ -11,17 +11,23 @@ fn main() {
 
     /* 1/9/21 - 1/11/21 */
     let mut input = String::new();
-    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let mut input_month = String::new();
+
+    // take input number and output corresponding month
     println!("Enter a number 1-12: ");
     io::stdin()
         .read_line(&mut input)
         .expect("error reading from stdin");
+    let input: usize = input.trim().parse().unwrap_or_default();
+    to_month(input, &mut input_month);
+    println!("{}", input_month);
 
-    // take input number and output corresponding month
-    let parse_input: usize = input.trim().parse().unwrap_or_default();
-    if parse_input > 0 && parse_input < 12 {
-        println!("That corresponds to the month of {}", months[parse_input - 1]); // -1 since index starts at 0
+}
+fn to_month(input: usize, month: &mut String){
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    if input > 0 && input < 13 {
+        month.push_str(months[input - 1]); // subtract 1 since index starts at 0
     } else {
-        println!("not in month range");
+        month.push_str("n/a");
     }
 }
