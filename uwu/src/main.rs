@@ -21,8 +21,11 @@ fn main() {
     let input: usize = input.trim().parse().unwrap_or_default();
     to_month(input, &mut input_month);
     println!("{}", input_month);
-
 }
+
+/*  params: input (index of month), month (empty borrowed mutable String,
+    used for return value) 
+    1/17/21 */
 fn to_month(input: usize, month: &mut String){
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     if input > 0 && input < 13 {
