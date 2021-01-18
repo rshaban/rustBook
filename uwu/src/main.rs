@@ -3,7 +3,7 @@ use std::io;
 use std::convert::TryFrom;
 
 fn main() {
-    /* 1/9/21 -  */    
+    /* 1/9/21 - 1/18/21 */    
     struct Birthday {
         date_of_birth: String,
         day: u32,
