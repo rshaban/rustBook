@@ -2,15 +2,15 @@
 use std::io;
 use std::convert::TryFrom;
 
-fn main() {
-    /* 1/9/21 - 1/18/21 */    
-    struct Birthday {
-        date_of_birth: String,
-        day: u32,
-        month_i: u32,
-        month: String,
-        year: u32
-    }
+struct Birthday {
+    date_of_birth: String,
+    day: u32,
+    month_i: u32,
+    month: String,
+    year: u32
+}
+
+fn main() {  
     let mut input = Birthday {
         date_of_birth: String::new(),
         day: 0u32,
@@ -25,6 +25,27 @@ fn main() {
         .read_line(&mut input.date_of_birth)
         .expect("Error reading from stdin");
 
+    input = get_birthday(input);
+    if input.month == "n/a" {
+        println!("Check your inputs");
+    } else {
+        println!("You were born on {} {}, {}", input.day, input.month, input.year);
+    }
+}
+/*  params: input (index of month), month (borrowed mutable String,
+    used for return value) */
+fn to_month(index: usize, month: &mut String){
+    month.clear();
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    if index > 0 && index < 13 {
+        month.push_str(months[index - 1]); // subtract 1 since index starts at 0
+    } else {
+        month.push_str("n/a");
+    }
+}
+/*  params: input, of type struct Birthday
+    returns: variable of type struct Birthday */
+fn get_birthday(mut input: Birthday) -> Birthday{
     // search for separators in date and take the data from between them
     let input_b = input.date_of_birth.as_bytes();
     let mut found = 0u32; // number of found separators
@@ -44,21 +65,5 @@ fn main() {
             break;
         }
     }
-    if input.month == "n/a" {
-        println!("Check your inputs");
-    } else {
-        println!("You were born on {} {}, {}", input.day, input.month, input.year);
-    }
-}
-/*  params: input (index of month), month (borrowed mutable String,
-    used for return value) 
-    1/17/21 */
-fn to_month(input: usize, month: &mut String){
-    month.clear();
-    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    if input > 0 && input < 13 {
-        month.push_str(months[input - 1]); // subtract 1 since index starts at 0
-    } else {
-        month.push_str("n/a");
-    }
+    return input;
 }
