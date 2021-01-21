@@ -26,7 +26,7 @@ fn main() {
         .expect("Error reading from stdin");
 
     input = get_birthday(input);
-    if input.month == "n/a" {
+    if input.month == "n/a" || input.day == 0 || input.year == 0 {
         println!("Check your inputs");
     } else {
         println!("You were born on {} {}, {}", input.day, input.month, input.year);
