@@ -19,11 +19,7 @@ fn main() {
         year: 0u32
     };
     input = get_birthday(input);
-    if input.month == "n/a" || input.day == 0 || input.year == 0 {
-        println!("Check your inputs");
-    } else {
-        println!("You were born on {} {}, {}", input.day, input.month, input.year);
-    }
+    print_birthday(input);
 }
 /*  params: input (index of month), month (borrowed mutable String,
     used for return value) */
@@ -64,4 +60,11 @@ fn get_birthday(mut input: Birthday) -> Birthday{
         }
     }
     return input;
+}
+fn print_birthday(input: Birthday){
+    if input.month == "n/a" || input.day == 0 || input.year == 0 {
+        println!("Check your inputs");
+    } else {
+        println!("You were born on {} {}, {}", input.day, input.month, input.year);
+    }
 }
