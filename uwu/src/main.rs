@@ -10,7 +10,7 @@ struct Birthday {
     year: u32
 }
 
-fn main() {  
+fn main() {
     let mut input = Birthday {
         date_of_birth: String::new(),
         day: 0u32,
@@ -18,13 +18,6 @@ fn main() {
         month: String::new(),
         year: 0u32
     };
-
-    // take input number and output corresponding month
-    println!("Enter your birthday (dd/mm/yyyy): ");
-    io::stdin()
-        .read_line(&mut input.date_of_birth)
-        .expect("Error reading from stdin");
-
     input = get_birthday(input);
     if input.month == "n/a" || input.day == 0 || input.year == 0 {
         println!("Check your inputs");
@@ -46,6 +39,11 @@ fn to_month(index: usize, month: &mut String){
 /*  params: input, of type struct Birthday
     returns: variable of type struct Birthday */
 fn get_birthday(mut input: Birthday) -> Birthday{
+    println!("Enter your birthday (dd/mm/yyyy): ");
+    io::stdin()
+        .read_line(&mut input.date_of_birth)
+        .expect("Error reading from stdin");
+
     // search for separators in date and take the data from between them
     let input_b = input.date_of_birth.as_bytes();
     let mut found = 0u32; // number of found separators
